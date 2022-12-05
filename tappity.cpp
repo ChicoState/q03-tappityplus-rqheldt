@@ -6,6 +6,7 @@
 //Constructor sets the reference phrase
 tappity::tappity(std::string reference)
 {
+
 }
 
 //Provide the input to be compared to the reference. Before this 
