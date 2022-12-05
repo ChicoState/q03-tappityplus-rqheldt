@@ -1,6 +1,9 @@
 #ifndef _TAPPITY_H_
 #define _TAPPITY_H_
 #include <string>
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
 
 /**
  * Class for tappity
@@ -8,6 +11,8 @@
 class tappity
 {
     private:
+        string m_ref;
+        string m_input;
 
     public:
         //Constructor sets the reference phrase

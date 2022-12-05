@@ -1,0 +1,155 @@
+        -:    0:Source:tappity.cpp
+        -:    0:Graph:tappity.gcno
+        -:    0:Data:tappity.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <cstdlib>
+        -:    4:#include <cmath>
+        -:    5:using namespace std;
+        -:    6:#include "tappity.h"
+        -:    7:/**
+        -:    8: * Class for tappity
+        -:    9:**/
+        -:   10:
+        -:   11://Constructor sets the reference phrase
+function _ZN7tappityC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 12 returned 100% blocks executed 63%
+       12:   12:tappity::tappity(std::string reference)
+call    0 returned 100%
+call    1 returned 100%
+call    2 never executed
+call    3 never executed
+        -:   13:{
+       12:   14:  m_ref = reference;
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+       12:   15:}
+        -:   16:
+        -:   17://Provide the input to be compared to the reference. Before this 
+        -:   18://function is called, the input should be considered an empty string
+function _ZN7tappity5entryENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 12 returned 100% blocks executed 100%
+       12:   19:void tappity::entry(std::string input)
+        -:   20:{
+       12:   21:  m_input = input;
+call    0 returned 100%
+       12:   22:}
+        -:   23:
+        -:   24://Compares the length of the reference to that of the input and
+        -:   25://returns the absolute value of the difference, or 0 if they are the
+        -:   26://same length
+function _ZN7tappity17length_differenceEv called 12 returned 100% blocks executed 100%
+       12:   27:int tappity::length_difference()
+        -:   28:{
+       12:   29:  if(m_ref.length() > m_input.length()){
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 42% (fallthrough)
+branch  3 taken 58%
+        5:   30:    return abs(m_ref.length() - m_input.length());
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+        -:   31:  }
+        7:   32:  return abs(m_input.length() - m_ref.length());
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+        -:   33:}
+        -:   34:
+        -:   35://Compares the content of the reference to that of the input and
+        -:   36://calculates the accuracy of matching characters. If the two strings
+        -:   37://are identical, accuracy should be 100. However, for each 
+        -:   38://corresponding character that does not match in the same location,
+        -:   39://the percentage of corresponding characters should be returned.
+        -:   40://For example, if the reference and input have 10 letters and the input
+        -:   41://matches 8 of the corresponding reference characters, the function 
+        -:   42://should return 80. When input does not have the same number of
+        -:   43://characters as the reference, the accuracy should represent the percent
+        -:   44://of matching characters between the shorter and longer strings. For
+        -:   45://example, if one string has 8 characters matching the corresponding
+        -:   46://locations in another string that has 16 characters, the accuracy is 50.
+function _ZN7tappity8accuracyEv called 6 returned 100% blocks executed 100%
+        6:   47:double tappity::accuracy()
+        -:   48:{
+        6:   49:  int dif = length_difference();
+call    0 returned 100%
+        6:   50:  int num_correct = 0;
+        -:   51:  double acc;
+        6:   52:  if(!dif){
+branch  0 taken 33% (fallthrough)
+branch  1 taken 67%
+        -:   53:    //calculate difference in characters
+        2:   54:    if(m_input.length() == 0 and m_ref.length() == 0){return (double)100;}
+call    0 returned 100%
+branch  1 taken 50% (fallthrough)
+branch  2 taken 50%
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0%
+branch  6 taken 50% (fallthrough)
+branch  7 taken 50%
+       15:   55:    for(int i=0; i<m_input.length(); ++i){
+call    0 returned 100%
+branch  1 taken 93% (fallthrough)
+branch  2 taken 7%
+       14:   56:      if(m_input[i] == m_ref[i]){
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0%
+       14:   57:        ++num_correct;
+        -:   58:      }
+        -:   59:    }
+        1:   60:    acc = ((double)num_correct / (double)m_ref.length()) * (double)100;
+call    0 returned 100%
+        -:   61:  }
+        -:   62:  else{
+        -:   63:    //calculate the difference in characters with magic
+        4:   64:    if(m_ref.length() > m_input.length()){// this means the reference has more characters than the input
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 50% (fallthrough)
+branch  3 taken 50%
+       16:   65:      for(int i=0; i<m_input.length(); ++i){//we loop through the shorter string and divide by the longer string
+call    0 returned 100%
+branch  1 taken 88% (fallthrough)
+branch  2 taken 13%
+       14:   66:        if(m_input[i] == m_ref[i]){
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 93% (fallthrough)
+branch  3 taken 7%
+       13:   67:          ++num_correct;
+        -:   68:        }
+        -:   69:      }
+        2:   70:      acc = ((double)num_correct / (double)m_ref.length()) * (double)100;
+call    0 returned 100%
+        -:   71:    }
+        -:   72:    else{//this means the input has more characters than the reference
+       16:   73:      for(int i=0; i<m_ref.length(); ++i){
+call    0 returned 100%
+branch  1 taken 88% (fallthrough)
+branch  2 taken 13%
+       14:   74:        if(m_input[i] == m_ref[i]){
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 93% (fallthrough)
+branch  3 taken 7%
+       13:   75:          ++num_correct;
+        -:   76:        }
+        -:   77:      }
+        2:   78:      acc = ((double)num_correct / (double)m_input.length()) * (double)100;
+call    0 returned 100%
+        -:   79:    }
+        -:   80:  }
+        5:   81:  return acc;
+function _GLOBAL__sub_I__ZN7tappityC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 1 returned 100% blocks executed 100%
+function _Z41__static_initialization_and_destruction_0ii called 1 returned 100% blocks executed 100%
+        3:   82:}
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+branch  3 taken 100% (fallthrough)
+branch  4 taken 0%
